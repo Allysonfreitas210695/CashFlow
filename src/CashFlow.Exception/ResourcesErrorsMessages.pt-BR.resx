@@ -123,6 +123,9 @@
   <data name="DATE_REQUIRED" xml:space="preserve">
     <value>a data será a mesma de hoje.</value>
   </data>
+  <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
+    <value>dispensa não encontrada.</value>
+  </data>
   <data name="PAYMENTTYPE_REQUIRED" xml:space="preserve">
     <value>TIPO DE PAGAMENTO é inválido.</value>
   </data>

@@ -79,6 +79,15 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a dispensation not found..
+        /// </summary>
+        public static string EXPENSE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("EXPENSE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a PAYMENT TYPE is invalid.
         /// </summary>
         public static string PAYMENTTYPE_REQUIRED {

@@ -17,7 +17,7 @@ public class CultureMiddleware
 
         var requestCulture = context.Request.Headers.AcceptLanguage.FirstOrDefault();
             
-        var cultureInfo = new CultureInfo("en");
+        var cultureInfo = new CultureInfo("pt-BR");
 
         if (
             !string.IsNullOrWhiteSpace(requestCulture) 
