@@ -9,14 +9,17 @@ namespace CashFlow.API.Controllers;
 [ApiController]
 public class ExpensesController : ControllerBase
 {
+
     [HttpPost]
     [ProducesResponseType(typeof(ResponseRegisteredExpenseJson),StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status500InternalServerError)]
-    public IActionResult Register([FromBody] RequestRegisterExpenseJson request)
+    public IActionResult Register(
+        [FromServices] IRegisterExpenseUseCase registerExpenseUseCase, 
+        [FromBody] RequestRegisterExpenseJson request
+    )
     {
-            var useCase = new RegisterExpenseUseCase();
-            var response = useCase.Execute(request);
+            var response = registerExpenseUseCase.Execute(request);
 
             return Created(string.Empty, response);
     }
