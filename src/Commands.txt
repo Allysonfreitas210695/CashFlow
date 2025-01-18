@@ -1,0 +1,7 @@
+Create migrartions
+
+dotnet ef migrations add InitialMigration --project CashFlow.Infrastructure --startup-project CashFlow.API
+
+Update migrations	
+
+dotnet ef database update --project .\CashFlow.API\
