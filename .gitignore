@@ -1,0 +1,52 @@
+# Ignore arquivos e pastas do JetBrains (.idea)
+.idea/
+
+# Ignore arquivos de build do Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore pastas de build
+bin/
+obj/
+Debug/
+Release/
+**/bin/
+**/obj/
+
+# Ignore pacotes NuGet baixados
+*.nupkg
+packages/
+.nuget/
+
+# Ignore arquivos de log
+*.log
+
+# Ignore arquivos gerados por lock ou cache
+project.lock.json
+project.fragment.lock.json
+*.lock.json
+
+# Ignore arquivos temporários
+*.tmp
+*.temp
+*.pid
+*.seed
+
+# Ignore arquivos de deploy
+publish/
+wwwroot/
+
+# Ignore configurações locais
+*.dbmdl
+*.jfm
+
+# Ignore arquivos do sistema
+Thumbs.db
+.DS_Store
+
+# Ignore arquivos e pastas de teste
+TestResults/
+*.TestResults
