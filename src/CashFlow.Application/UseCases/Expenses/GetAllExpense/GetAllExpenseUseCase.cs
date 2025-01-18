@@ -6,17 +6,17 @@ using CashFlow.Domain.Repositories.Expenses;
 namespace CashFlow.Application.UseCases.Expenses.GetAllExpense;
 public class GetAllExpenseUseCase : IGetAllExpenseUseCase
 {
-    private readonly IExpensesReadOnlyRepository _expensesReadOnlyRepository;
+    private readonly IExpensesReadOnlyRepository _repository;
     private readonly IMapper _mapper;
-    public GetAllExpenseUseCase(IExpensesReadOnlyRepository expensesReadOnlyRepository, IMapper mapper)
+    public GetAllExpenseUseCase(IExpensesReadOnlyRepository repository, IMapper mapper)
     {
-        _expensesReadOnlyRepository = expensesReadOnlyRepository;
+        _repository = repository;
         _mapper = mapper;
     }
 
     public async Task<ResponseExpensesJson> Execute()
     {
-        var result = await _expensesReadOnlyRepository.GetAll();
+        var result = await _repository.GetAll();
 
         return new ResponseExpensesJson
         {

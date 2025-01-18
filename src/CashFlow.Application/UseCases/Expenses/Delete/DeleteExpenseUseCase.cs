@@ -7,23 +7,18 @@ using CashFlow.Exception.Exceptions;
 namespace CashFlow.Application.UseCases.Expenses.Delete;
 public class DeleteExpenseUseCase : IDeleteExpenseUseCase
 {
-    private readonly IExpensesReadOnlyRepository _expensesReadOnlyRepository;
-    private readonly IExpensesDeleteOnlyRepository _expensesDeleteOnlyRepository;
+    private readonly IExpensesDeleteOnlyRepository _repository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteExpenseUseCase(
-        IExpensesReadOnlyRepository expensesReadOnlyRepository, 
-        IExpensesDeleteOnlyRepository expensesDeleteOnlyRepository,
-        IUnitOfWork unitOfWork)
+    public DeleteExpenseUseCase(IExpensesDeleteOnlyRepository repository, IUnitOfWork unitOfWork)
     {
-        _expensesReadOnlyRepository = expensesReadOnlyRepository;
-        _expensesDeleteOnlyRepository = expensesDeleteOnlyRepository;
+        _repository = repository;
         _unitOfWork = unitOfWork;
     }
 
     public async Task Execute(long id)
     {
-        var result =  await _expensesDeleteOnlyRepository.Delete(id);
+        var result =  await _repository.Delete(id);
 
         if (!result)
         {
