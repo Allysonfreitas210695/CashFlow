@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CashFlow.Application\CashFlow.Application.csproj" />
-    <ProjectReference Include="..\tests\CommonTestUltilities\CommonTestUltilities.csproj" />
+    <ProjectReference Include="..\..\src\CashFlow.Application\CashFlow.Application.csproj" />
+    <ProjectReference Include="..\CommonTestUltilities\CommonTestUltilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
