@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Tests", "tests\V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestUltilities", "tests\CommonTestUltilities\CommonTestUltilities.csproj", "{9CA6CD4F-B46B-4790-881E-8BBC0E4ABAA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "UseCases.Test\UseCases.Test.csproj", "{F8E4E7A8-41F1-4A0E-A9F8-5834715731EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "tests\UseCases.Test\UseCases.Test.csproj", "{F8E4E7A8-41F1-4A0E-A9F8-5834715731EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
