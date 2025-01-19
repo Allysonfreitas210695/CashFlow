@@ -25,8 +25,8 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         IPasswordEncripter passwordEncripter,
         IUserReadOnlyRepository userReadOnlyRepository,
         IUserWriteOnlyRepository userWriteOnlyRepository,
-        IUnitOfWork unitOfWork,
-        IAccessTokenGenerator accessToken
+        IAccessTokenGenerator accessToken,
+        IUnitOfWork unitOfWork
         )
     {
         _mapper = mapper;
