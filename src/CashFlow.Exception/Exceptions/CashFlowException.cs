@@ -10,5 +10,5 @@ public abstract class CashFlowException : SystemException
     }
 
     public abstract List<string> GetErrors { get; }
-    public abstract HttpStatusCode GetStatusError();
+    public abstract int GetStatusError();
 }

@@ -1,4 +1,3 @@
-using System.Globalization;
 using CashFlow.Communication.Responses;
 using CashFlow.Exception;
 using CashFlow.Exception.Exceptions;
@@ -21,7 +20,7 @@ public class ExceptionFilter : IExceptionFilter
     {
         if (context.Exception is CashFlowException ex)
         {
-            context.HttpContext.Response.StatusCode = (int)ex.GetStatusError();
+            context.HttpContext.Response.StatusCode = ex.GetStatusError();
             context.Result = new ObjectResult(new ResponseErrorJson(ex.GetErrors));
         }else
         {

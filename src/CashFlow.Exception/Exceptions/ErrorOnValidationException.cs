@@ -12,5 +12,5 @@ public class ErrorOnValidationException : CashFlowException
     }
 
     public override List<string> GetErrors => Errors;
-    public override HttpStatusCode GetStatusError() => HttpStatusCode.BadRequest;
+    public override int GetStatusError() => (int)HttpStatusCode.BadRequest;
 }

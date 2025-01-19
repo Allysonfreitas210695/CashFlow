@@ -12,5 +12,5 @@ public class NotFoundException : CashFlowException
 
     public override List<string> GetErrors => [ErrorMessage];
 
-    public override HttpStatusCode GetStatusError() => HttpStatusCode.NotFound;
+    public override int GetStatusError() => (int)HttpStatusCode.NotFound;
 }
