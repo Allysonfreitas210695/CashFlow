@@ -9,5 +9,5 @@ public class InvalidLoginException : CashFlowException
     }
     public override List<string> GetErrors => [Message];
 
-    public override int GetStatusError() => (int)HttpStatusCode.NotFound;
+    public override int GetStatusError() => (int)HttpStatusCode.Unauthorized;
 }
