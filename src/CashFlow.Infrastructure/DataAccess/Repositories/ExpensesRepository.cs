@@ -17,29 +17,26 @@ internal class ExpensesRepository : IExpensesWriteOnlyRepository, IExpensesReadO
         await _dbContext.Expenses.AddAsync(expense);
     }
 
-    public async Task<bool> Delete(long id)
+    public async Task Delete(long id)
     {
-        var result = await _dbContext.Expenses.FirstOrDefaultAsync(x => x.Id == id);
-        if (result == null) return false;
+        var result = await _dbContext.Expenses.FirstAsync(x => x.Id == id);
 
-        _dbContext.Expenses.Remove(result);
-
-        return true;
+        _dbContext.Expenses.Remove(result!);
     }
 
-    public async Task<List<Expense>> GetAll()
+    public async Task<List<Expense>> GetAll(User user)
     {
-        return await _dbContext.Expenses.AsNoTracking().ToListAsync();
+        return await _dbContext.Expenses.Where(x => x.UserId == user.Id).AsNoTracking().ToListAsync();
     }
 
-    async Task<Expense?> IExpensesReadOnlyRepository.GetById(long id)
+    async Task<Expense?> IExpensesReadOnlyRepository.GetById(User user, long id)
     {
-        return await _dbContext.Expenses.Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
+        return await _dbContext.Expenses.Where(x => x.Id == id && x.UserId == user.Id).AsNoTracking().FirstOrDefaultAsync();
     }
 
-    async Task<Expense?> IExpensesUpdateOnlyRepository.GetById(long id)
+    async Task<Expense?> IExpensesUpdateOnlyRepository.GetById(User user, long id)
     {
-        return await _dbContext.Expenses.Where(x => x.Id == id).FirstOrDefaultAsync();
+        return await _dbContext.Expenses.FirstOrDefaultAsync(x => x.Id == id && x.UserId == user.Id);
     }
 
     public void Update(Expense expense)
@@ -47,10 +44,10 @@ internal class ExpensesRepository : IExpensesWriteOnlyRepository, IExpensesReadO
         _dbContext.Expenses.Update(expense);
     }
 
-    public async Task<List<Expense>> FilterByMonth(DateOnly month)
+    public async Task<List<Expense>> FilterByMonth(User user, DateOnly month)
     {
         var startDate = new DateTime(year: month.Year, month: month.Month, day: 1).Date;
-        
+
         //Retorna o total de dias
         var dayInMonth = DateTime.DaysInMonth(year: month.Year, month: month.Month);
 
@@ -58,7 +55,11 @@ internal class ExpensesRepository : IExpensesWriteOnlyRepository, IExpensesReadO
 
         return await _dbContext.Expenses
                                 .AsNoTracking()
-                                .Where(e => e.Date.Date >= startDate && e.Date.Date <= endData)
+                                .Where(e =>
+                                    e.UserId == user.Id &&
+                                    e.Date.Date >= startDate &&
+                                    e.Date.Date <= endData
+                                )
                                 .OrderBy(expense => expense.Date)
                                     .ThenBy(expense => expense.Title)
                                 .ToListAsync();
